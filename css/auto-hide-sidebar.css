@@ -110,7 +110,6 @@ section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
 /* sidebar resize */
 .sidebarResizeHandle_c48ade {
     display: none !important;
-    padding-right: 4px;
 }
 
 /* bottom line - gone */
