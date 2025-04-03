@@ -1,0 +1,109 @@
+/* Auto-hide sidebar */
+/* created by: my5ter */
+/* created: 2025-04-01 */
+
+/* Makes the sidebar auto-hide */
+
+:root {
+    --transition-duration: 0.3s;
+    /* use var(--transition-duration) */
+}
+
+/* sidebar (contains server/channel lists) */
+div.sidebar_c48ade:hover {
+    /* reveal channel list */
+    ~ div.page_c48ade {
+        margin-left: 0px;
+    }
+    /* adjust voice panel */
+    & section.panels_c48ade {
+        width: 96% !important;
+    }
+}
+/* folding back delay */
+div.sidebar_c48ade:not(:hover) {
+    ~ div.page_c48ade {
+        transition-delay: var(--transition-duration);
+    }
+    /* voice panel */
+    & section.panels_c48ade {
+        transition-delay: var(--transition-duration);
+    }
+    & div.buttons__37e49 {
+        transition-delay: var(--transition-duration);
+    }
+}
+
+
+/* server list - reduce width and adjust avatar */
+nav.guilds_c48ade {
+    margin-right: -6px;
+    margin-left: -6px;
+}
+div.avatarWrapper__37e49 {
+    justify-content: center;
+}
+
+
+/* channel list - overlay the chat on top of it, to hide it */
+/* why? if channel list width is below 100px, it unloads the channels, which freezes Discord for a moment and causes lag */
+div.page_c48ade {
+    margin-left: calc(-1*(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width)));
+    width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
+    transition: margin-left var(--transition-duration);
+}
+
+/* voice panel */
+
+section.panels_c48ade {
+    opacity: 50%;
+    padding-left: 12px;
+    padding-right: 5px;
+    width: 180px !important;
+    transition:
+        opacity, width, border-radius,
+        all var(--transition-duration);
+}
+div.container__37e49 {
+    padding: 0px !important;
+}
+
+/* activity/voice/user panel - appear on user hover */
+div.wrapper_e131a9,
+div.activityPanel_c48ade {
+    display: none;
+    opacity: inherit;
+    transition: display var(--transition-duration);
+}
+div.buttons__37e49 {
+    width: 60px !important;
+    overflow: hidden;
+    transition: width var(--transition-duration);
+}
+section.panels_c48ade:hover {
+    opacity: 100%;
+    margin-left: 0px;
+    width: 96% !important;
+    & div.wrapper_e131a9,
+    div.activityPanel_c48ade {
+        display: inherit;
+    }
+    & div.buttons__37e49 {
+        width: min-content !important;
+    }
+}
+section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
+    transition-delay: var(--transition-duration);
+}
+
+/* voice panel - appear on sidebar hover */
+/* div.buttons__37e49 {
+    display: none;
+    transition: display 1s;
+} */
+
+
+/* bottom line - gone */
+div.sidebar_c48ade::after {
+    display: none !important;
+}
