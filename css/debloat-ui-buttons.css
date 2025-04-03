@@ -1,21 +1,13 @@
-/* Minor Hides */
+/* Debloat UI - Buttons Edition */
 /* Hides UI buttons that I deemed unnecessary */
 /* created by: Myster */
-/* version: 2025-04-02 */
+/* version: 2025-04-03 */
+
+
 
 /* Titlebar */
 /* hide the help button */
 a:has(div[aria-label="Help"]) {
-    display: none !important;
-}
-
-/* DMs list */
-/* leave only friends list and message requests */
-a[data-list-item-id="private-channels-uid_42___nitro"], /* nitro button */
-a[data-list-item-id="private-channels-uid_42___shop"], /* avatar decorations shop button */
-.sectionDivider__35e86, /* divider lines */
-.container__675e5, /* "Play again" section */
-.privateChannelsHeaderContainer__99e7c /* "Direct Messages" header */ {
     display: none !important;
 }
 

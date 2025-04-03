@@ -1,0 +1,19 @@
+/* Debloat UI - DM's List Edition */
+/* Makes DM list more compact */
+/* created by: Myster */
+/* version: 2025-04-03 */
+
+
+
+/* DMs list */
+/* leave only friends list and message requests */
+li:has(a[href="/store"]), /* nitro button */
+li:has(a[href="/shop"]), /* avatar decorations shop button */
+.sectionDivider__35e86:last-of-type, /* 1 divider line only */
+.container__675e5, /* "Play again" section */
+.privateChannelsHeaderContainer__99e7c /* "Direct Messages" header */ {
+    display: none !important;
+}
+.sectionDivider__35e86 {
+    margin-top: 4px !important;
+}
