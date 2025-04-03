@@ -11,7 +11,8 @@
 }
 
 /* sidebar (contains server/channel lists) */
-div.sidebar_c48ade:hover {
+div.sidebar_c48ade:hover,
+div.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
     /* reveal channel list */
     ~ div.page_c48ade {
         margin-left: 0px;
@@ -19,6 +20,9 @@ div.sidebar_c48ade:hover {
     /* adjust voice panel */
     & section.panels_c48ade {
         width: 96% !important;
+    }
+    & .sidebarResizeHandle_c48ade {
+        display: grid !important;
     }
 }
 /* folding back delay */
@@ -103,6 +107,11 @@ section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
     transition: display 1s;
 } */
 
+/* sidebar resize */
+.sidebarResizeHandle_c48ade {
+    display: none !important;
+    padding-right: 4px;
+}
 
 /* bottom line - gone */
 div.sidebar_c48ade::after {
