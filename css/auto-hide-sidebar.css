@@ -1,8 +1,9 @@
-/* Auto-hide sidebar */
-/* created by: my5ter */
-/* created: 2025-04-01 */
+/* Auto-hide Sidebar */
+/* Makes the channel list auto-hide */
+/* created by: Myster */
+/* version: 2025-04-02 */
 
-/* Makes the sidebar auto-hide */
+
 
 :root {
     --transition-duration: 0.3s;
