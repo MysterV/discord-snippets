@@ -7,7 +7,7 @@
 
 :root {
     --transition-duration: 0.3s;
-    /* use var(--transition-duration) */
+    --transition-delay: 0.5s;
 }
 
 /* sidebar (contains server/channel lists) */
@@ -28,14 +28,14 @@ div.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
 /* folding back delay */
 div.sidebar_c48ade:not(:hover) {
     ~ div.page_c48ade {
-        transition-delay: var(--transition-duration);
+        transition-delay: var(--transition-delay);
     }
     /* voice panel */
     & section.panels_c48ade {
-        transition-delay: var(--transition-duration);
+        transition-delay: var(--transition-delay);
     }
     & div.buttons__37e49 {
-        transition-delay: var(--transition-duration);
+        transition-delay: var(--transition-delay);
     }
 }
 
@@ -98,7 +98,7 @@ section.panels_c48ade:hover {
     }
 }
 section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
-    transition-delay: var(--transition-duration);
+    transition-delay: var(--transition-delay);
 }
 
 /* voice panel - appear on sidebar hover */
