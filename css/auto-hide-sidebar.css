@@ -1,8 +1,7 @@
 /* Auto-hide Sidebar */
 /* Makes the channel list auto-hide */
 /* created by: Myster */
-/* version: 2025-04-02 */
-
+/* version: 2025-04-13 */
 
 
 :root {
@@ -10,109 +9,114 @@
     --transition-delay: 0.5s;
 }
 
-/* sidebar (contains server/channel lists) */
-div.sidebar_c48ade:hover,
-div.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
-    /* reveal channel list */
-    ~ div.page_c48ade {
-        margin-left: 0px;
-    }
-    /* adjust voice panel */
-    & section.panels_c48ade {
-        width: 96% !important;
-    }
-    & .sidebarResizeHandle_c48ade {
-        display: grid !important;
-    }
-}
-/* folding back delay */
-div.sidebar_c48ade:not(:hover) {
-    ~ div.page_c48ade {
-        transition-delay: var(--transition-delay);
-    }
-    /* voice panel */
-    & section.panels_c48ade {
-        transition-delay: var(--transition-delay);
-    }
-    & div.buttons__37e49 {
-        transition-delay: var(--transition-delay);
-    }
-}
-
-
 /* server list - reduce width and adjust avatar */
 nav.guilds_c48ade {
     margin-right: -6px;
     margin-left: -6px;
 }
-div.avatarWrapper__37e49 {
-    justify-content: center;
+
+/* bottom line - gone */
+.sidebar_c48ade::after {
+    display: none !important;
 }
 
 
 /* channel list - overlay the chat on top of it, to hide it */
 /* why? if channel list width is below 100px, it unloads the channels, which freezes Discord for a moment and causes lag */
-div.page_c48ade {
-    margin-left: calc(-1*(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width)));
-    width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
-    transition: margin-left var(--transition-duration);
+
+/* sidebar resize bar */
+.sidebarResizeHandle_c48ade {
+    display: none !important;
 }
+.page_c48ade {
+    margin-left: calc(-1*(var(--custom-guild-sidebar-width) - (var(--custom-guild-list-width))) - 1px);
+    width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
+    border: none !important;
+    .callContainer_cb9592,
+    .chat_f75fb0 {
+        border-top: none !important;
+        border-radius: 8px;
+        transition: border-top-left-radius var(--transition-duration);
+    }
+    transition: all var(--transition-duration);
+}
+
+
 
 /* voice panel */
-
 section.panels_c48ade {
     opacity: 50%;
-    padding-left: 12px;
-    padding-right: 5px;
-    width: 180px !important;
-    transition:
-        opacity, width, border-radius,
-        all var(--transition-duration);
+    width: 115px !important; /* change to 0 for only avatar */
+    transition: all var(--transition-duration);
 }
-div.container__37e49 {
+/* avatar row */
+.container__37e49 {
     padding: 0px !important;
+    margin-right: 5px;
 }
 
 /* activity/voice/user panel - appear on user hover */
-div.wrapper_e131a9,
-div.activityPanel_c48ade {
-    display: none;
-    opacity: inherit;
-    transition: display var(--transition-duration);
+.wrapper_e131a9,
+.activityPanel_c48ade {
+    display:none;
+    opacity: 0%;
+    transition: opacity var(--transition-duration);
 }
-div.buttons__37e49 {
+
+.buttons__37e49 {
     width: 60px !important;
     overflow: hidden;
     transition: width var(--transition-duration);
 }
+
 section.panels_c48ade:hover {
     opacity: 100%;
-    margin-left: 0px;
-    width: 96% !important;
-    & div.wrapper_e131a9,
-    div.activityPanel_c48ade {
+    .wrapper_e131a9,
+    .activityPanel_c48ade {
         display: inherit;
+        opacity: 100%;
     }
-    & div.buttons__37e49 {
-        width: min-content !important;
+    .buttons__37e49 {
+        width: 100px !important;
     }
 }
+
+
+
+/* sidebar HOVER */
+.sidebar_c48ade:hover,
+.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
+    /* reveal channel list */
+    ~ .page_c48ade {
+        margin-left: 0px;
+        border-top-left-radius: 0px !important;
+    }
+    ~ .page_c48ade .callContainer_cb9592,
+    ~ .page_c48ade .chat_f75fb0 {
+        border-radius: 0px;
+    }
+    .sidebarResizeHandle_c48ade {
+        display: grid !important;
+    }
+    /* adjust voice panel */
+    section.panels_c48ade {
+        width: 96% !important;
+    }
+}
+
+
+/* UNHOVER delays */
+.sidebar_c48ade:not(:hover) {
+    ~ .page_c48ade,
+    ~ .page_c48ade .callContainer_cb9592,
+    ~ .page_c48ade .chat_f75fb0,
+    section.panels_c48ade,
+    .container__37e49,
+    .buttons__37e49 {
+        transition-delay: var(--transition-delay);
+    }
+}
+
 section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
     transition-delay: var(--transition-delay);
-}
-
-/* voice panel - appear on sidebar hover */
-/* div.buttons__37e49 {
-    display: none;
-    transition: display 1s;
-} */
-
-/* sidebar resize */
-.sidebarResizeHandle_c48ade {
-    display: none !important;
-}
-
-/* bottom line - gone */
-div.sidebar_c48ade::after {
-    display: none !important;
 }
