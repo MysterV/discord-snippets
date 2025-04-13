@@ -34,7 +34,7 @@ nav.guilds_c48ade {
     border: none !important;
     .callContainer_cb9592,
     .chat_f75fb0 {
-        border-top: none !important;
+        border: none !important;
         border-radius: 8px;
         transition: border-top-left-radius var(--transition-duration);
     }
