@@ -3,9 +3,6 @@
 /* created by: Myster */
 /* version: 2025-04-03 */
 
-
-
-/* DMs list */
 /* leave only friends list and message requests */
 li:has(a[href="/store"]), /* nitro button */
 li:has(a[href="/shop"]), /* avatar decorations shop button */

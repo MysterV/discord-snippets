@@ -4,15 +4,12 @@
 /* version: 2025-04-03 */
 
 
-
-/* Titlebar */
-/* hide the help button */
+/* Titlebar - hide the help button */
 a:has(div[aria-label="Help"]) {
     display: none !important;
 }
 
-/* Chat textbox buttons */
-/* leave only the "+" and emote buttons */
+/* Chat textbox buttons - leave only the "+" and emote buttons */
 div.buttons__74017 > button[aria-label="Send a gift"],
 div.buttons__74017 > div:has(
     button[aria-label="Send a gift"],
