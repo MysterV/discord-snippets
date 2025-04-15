@@ -120,3 +120,9 @@ section.panels_c48ade:hover {
 section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
     transition-delay: var(--transition-delay);
 }
+
+
+/* fix header height after removing 1px border */
+.title_f75fb0 {
+    height: calc(var(--custom-channel-header-height) + 1px) !important;
+}
