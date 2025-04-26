@@ -1,6 +1,7 @@
 Small, modular CSS snippets to improve tiny bits of Discord app's appearance.
+Designed to work with BetterDiscord/Vencord's custom CSS loading features.
 
-I use them as custom css, but feel free to incorporate them into a theme if you want, just remember to let me know so that I can check it out!
+Feel free to incorporate them into a theme if you want, just remember to let me know so that I can check it out. 🥺
 
 
 TODO:
