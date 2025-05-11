@@ -1,128 +1,180 @@
 /* Auto-hide Sidebar */
 /* Makes the channel list auto-hide */
 /* created by: Myster */
-/* version: 2025-04-13 */
+/* version: 2025-05-11 */
 
-
+/* =============== PRECONFIG =============== */
+/* (variables, hide some things, unhide other, remove padding, etc.) */
 :root {
     --transition-duration: 0.3s;
-    --transition-delay: 0.5s;
-}
-
-/* server list - reduce width and adjust avatar */
-nav.guilds_c48ade {
-    margin-right: -6px;
-    margin-left: -6px;
-}
-
-/* bottom line - gone */
-.sidebar_c48ade::after {
-    display: none !important;
-}
-
-
-/* channel list - overlay the chat on top of it, to hide it */
-/* why? if channel list width is below 100px, it unloads the channels, which freezes Discord for a moment and causes lag */
-
-/* sidebar resize bar */
-.sidebarResizeHandle_c48ade {
-    display: none !important;
-}
-.page_c48ade {
-    margin-left: calc(-1*(var(--custom-guild-sidebar-width) - (var(--custom-guild-list-width))) - 1px);
-    width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
-    border: none !important;
-    .callContainer_cb9592,
-    .chat_f75fb0 {
-        border: none !important;
-        border-radius: 8px;
-        transition: border-top-left-radius var(--transition-duration);
-    }
-    transition: all var(--transition-duration);
-}
-
-
-
-/* voice panel */
-section.panels_c48ade {
-    opacity: 50%;
-    width: 115px !important; /* change to 0 for only avatar */
-    transition: all var(--transition-duration);
-}
-/* avatar row */
-.container__37e49 {
-    padding: 0px !important;
-    margin-right: 5px;
-}
-
-/* activity/voice/user panel - appear on user hover */
-.wrapper_e131a9,
-.activityPanel_c48ade {
-    display:none;
-    opacity: 0%;
-    transition: opacity var(--transition-duration);
-}
-
-.buttons__37e49 {
-    width: 60px !important;
-    overflow: hidden;
-    transition: width var(--transition-duration);
-}
-
-section.panels_c48ade:hover {
-    opacity: 100%;
-    .wrapper_e131a9,
-    .activityPanel_c48ade {
-        display: inherit;
-        opacity: 100%;
-    }
-    .buttons__37e49 {
-        width: 100px !important;
-    }
-}
-
-
-
-/* sidebar HOVER */
-.sidebar_c48ade:hover,
-.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
-    /* reveal channel list */
-    ~ .page_c48ade {
-        margin-left: 0px;
-        border-top-left-radius: 0px !important;
-    }
-    ~ .page_c48ade .callContainer_cb9592,
-    ~ .page_c48ade .chat_f75fb0 {
-        border-radius: 0px;
-    }
-    .sidebarResizeHandle_c48ade {
-        display: grid !important;
-    }
-    /* adjust voice panel */
-    section.panels_c48ade {
-        width: 96% !important;
-    }
-}
-
-
-/* UNHOVER delays */
-.sidebar_c48ade:not(:hover) {
-    ~ .page_c48ade,
-    ~ .page_c48ade .callContainer_cb9592,
-    ~ .page_c48ade .chat_f75fb0,
-    section.panels_c48ade,
-    .container__37e49,
-    .buttons__37e49 {
-        transition-delay: var(--transition-delay);
-    }
-}
-
-section.panels_c48ade:not(:hover) & div.sidebar_c48ade:not(:hover) {
-    transition-delay: var(--transition-delay);
+    --transition-delay: 0.4s;
 }
 
 
 /* fix header height after removing 1px border */
 .title_f75fb0 {
     height: calc(var(--custom-channel-header-height) + 1px) !important;
+}
+
+/* bottom padding line */
+.sidebar_c48ade::after {
+    display: none !important;
+}
+
+/* extend channel list and DMs list to the botom of the page */
+.container__2637a {
+    padding-bottom: 0 !important;
+}
+.scroller__99e7c {
+    margin-bottom: 0 !important;
+}
+
+/* compact user panel */
+.container__37e49 {
+    padding: 0px !important;
+}
+
+
+/* =============== HIDDEN STATE =============== */
+
+
+/* ===== SIDEBAR & PAGE ===== */
+
+/* SERVER list - reduce width and adjust avatar */
+.guilds_c48ade {
+    margin-right: -5px;
+    margin-left: -5px;
+    transition: all var(--transition-duration);
+}
+
+
+/* CHANNEL list - hidden behind chat */
+/* why? if channel list width is below 100px,
+it unloads channels and freezes Discord and causes a lag spike,
+so we leave it unchanged and adjust everything around it */
+.page_c48ade {
+    margin-left: calc(-1*(var(--custom-guild-sidebar-width) - (var(--custom-guild-list-width))) - 1px);
+    width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
+    border: none !important;
+    transition: all var(--transition-duration);
+    .container__133bf,
+    .callContainer_cb9592,
+    .chat_f75fb0 {
+        border: none !important;
+        border-radius: 8px;
+        transition: border-top-left-radius var(--transition-duration);
+    }
+}
+
+
+
+/* ===== USER, VOICE & ACTIVITY panel ===== */
+/* (voice channel/avatar/voice/settings) */
+/* hide elements until panel hover */
+
+.panels_c48ade {
+    width: 85px !important;
+    rotate: 90deg;
+    transform: translate(-20px, calc(0.37 * var(--custom-guild-list-width)));
+    transition: opacity, width var(--transition-duration);
+}
+
+
+/* voice & activity panel */
+.wrapper_e131a9,
+.activityPanel_c48ade {
+    display: none;
+    transition: all var(--transition-duration);
+}
+
+/* avatar */
+.avatarWrapper__37e49 {
+    opacity: 0%;
+}
+
+/* mute/deafen/settings */
+.buttons__37e49 {
+    width: 75px;
+    transition: all var(--transition-duration);
+    button[aria-label="User Settings"] {
+        display: none;
+    }
+    button {
+        rotate: -90deg;
+    }
+}
+
+
+
+
+
+/* =============== ANIMATIONS =============== */
+
+
+/* HOVER sidebar */
+.sidebar_c48ade:hover,
+.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
+    /* roll back page to reveal channel list */
+    ~ .page_c48ade {
+        margin-left: 0px;
+        border-top-left-radius: 0px !important;
+    }
+    ~ .page_c48ade .container__133bf,
+    ~ .page_c48ade .callContainer_cb9592,
+    ~ .page_c48ade .chat_f75fb0 {
+        border-radius: 0px;
+    }
+
+    /* adjust SERVER list */
+    .guilds_c48ade {
+        margin-left: 0px;
+    }
+
+    /* adjust CHANNEL list */
+    .sidebarResizeHandle_c48ade {
+        display: grid !important;
+    }
+    /* adjust USER, VOICE & ACTIVITY panel */
+    .panels_c48ade {
+        rotate: 0deg;
+        transform: translate(0%);
+    }
+    button {
+        rotate: 0deg;
+    }
+}
+
+/* UNHOVER sidebar */
+.sidebar_c48ade:not(:hover) {
+    ~ .page_c48ade,
+    ~ .page_c48ade .container__133bf,
+    ~ .page_c48ade .callContainer_cb9592,
+    ~ .page_c48ade .chat_f75fb0 {
+        transition-delay: var(--transition-delay);
+    }
+}
+
+
+/* HOVER user, voice & activity panel */
+.panels_c48ade:hover {
+    width: calc(100% - var(--custom-panels-spacing)*2) !important;
+
+    .wrapper_e131a9,
+    .activityPanel_c48ade {
+        display: inherit;
+    }
+    
+    .avatarWrapper__37e49 {
+        opacity: 100%;
+    }
+
+    .buttons__37e49 {
+        width: 110px;
+        button[aria-label="User Settings"] {
+            display: flex;
+        }
+        button {
+            rotate: 0deg;
+        }
+    }
 }
