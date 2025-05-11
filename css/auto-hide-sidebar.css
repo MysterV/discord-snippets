@@ -72,6 +72,11 @@ so we leave it unchanged and adjust everything around it */
     }
 }
 
+/* sidebar resize bar */
+.sidebarResizeHandle_c48ade {
+    display: none !important;
+}
+
 
 
 /* ===== USER, VOICE & ACTIVITY panel ===== */
