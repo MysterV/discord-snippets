@@ -45,6 +45,12 @@
     margin-right: -5px;
     margin-left: -5px;
     transition: all var(--transition-duration);
+    /* add server/discover buttons */
+    .tutorialContainer__650eb,
+    .listItem__650eb:has(.pill__5bc7e) {
+        opacity: 0;
+        transition: all var(--transition-duration);
+    }
 }
 
 
@@ -128,6 +134,11 @@ so we leave it unchanged and adjust everything around it */
     /* adjust SERVER list */
     .guilds_c48ade {
         margin-left: 0px;
+        /* add server/discover buttons */
+        .tutorialContainer__650eb,
+        .listItem__650eb:has(.pill__5bc7e) {
+            opacity: 100%;
+        }
     }
 
     /* adjust CHANNEL list */
