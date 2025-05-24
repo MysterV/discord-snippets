@@ -129,6 +129,7 @@ body:has(#guild-browse-channels-context-menu) .sidebar_c48ade,
 body:has(#channel-context) .sidebar_c48ade,
 /* user panel */
 body:has(#rtc-channel) .sidebar_c48ade,
+body:has([class^="debugPanelSection_"]) .sidebar_c48ade,
 body:has(#video-device-context) .sidebar_c48ade,
 body:has(#user-context) .sidebar_c48ade,
 body:has(#audio-device-context) .sidebar_c48ade,
@@ -187,6 +188,7 @@ body:has(#video-device-context) .panels_c48ade,
 body:has(#user-context) .panels_c48ade,
 body:has(#audio-device-context) .panels_c48ade,
 body:has(#user-settings-cog) .panels_c48ade,
+body:has([class^="debugPanelSection_"]) .panels_c48ade,
 .panels_c48ade:hover {
     width: calc(100% - var(--custom-panels-spacing)*2) !important;
 
