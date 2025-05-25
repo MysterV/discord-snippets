@@ -1,0 +1,24 @@
+/* NAME */
+/* function: */
+/* made by:  Myster (https://github.com/MysterV) */
+/* version:  2025-05-25 */
+/* legal:    released under CC0 1.0 Universal (Public Domain) https://creativecommons.org/publicdomain/zero/1.0/ */
+
+
+/* TODO: rotate  */
+section.panels_c48ade {
+    /* max-width: 40px; */
+    /* :hover {
+        max-width: 96%;
+    } */
+    display: flex;
+    flex-direction: row-reverse;
+}
+.activityPanel_c48ade {
+    
+}
+.container__37e49,
+.buttons__37e49 {
+    flex-direction: column;
+    max-width: 40px;
+}

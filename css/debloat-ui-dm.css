@@ -1,7 +1,9 @@
 /* Debloat UI - DM's List */
-/* Makes DM list more compact */
-/* created by: Myster */
-/* version: 2025-04-03 */
+/* function: Makes DM list more compact */
+/* made by:  Myster (https://github.com/MysterV) */
+/* version:  2025-04-03 */
+/* legal:    released under CC0 1.0 Universal (Public Domain) https://creativecommons.org/publicdomain/zero/1.0/ */
+
 
 /* leave only friends list and message requests */
 li:has(a[href="/store"]), /* nitro button */
