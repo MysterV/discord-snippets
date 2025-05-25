@@ -106,12 +106,12 @@ so we leave it unchanged and adjust everything around it */
 }
 
 /* avatar */
-[class^="avatarWrapper__"] {
+[class^="panels_"] [class^="avatarWrapper__"] {
     opacity: 0%;
 }
 
 /* mute/deafen/settings */
-[class^="buttons__"] {
+[class^="panels_"] [class^="buttons__"] {
     width: 75px;
     transition: all var(--transition-duration);
     button[aria-label="User Settings"] {
