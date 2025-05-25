@@ -12,26 +12,30 @@
 
 
 /* fix header height after removing 1px border */
-.title_f75fb0 {
+[class^="chat_"] [class^="title_"] {
     height: calc(var(--custom-channel-header-height) + 1px) !important;
 }
 
 /* bottom padding line */
-.sidebar_c48ade::after {
+[class^="sidebar_"]::after {
     display: none !important;
 }
 
-/* extend channel list and DMs list to the botom of the page */
-.container__2637a {
+/* extend channel list and DMs list to the bottom of the page */
+[class^="sidebarList_"] [class^="container__"] {
     padding-bottom: 0 !important;
 }
-.scroller__99e7c {
+[class^="sidebarList_"] [class^="scroller__"] {
     margin-bottom: 0 !important;
 }
 
 /* compact user panel */
-.container__37e49 {
+[class^="panels_"] [class^="container__"] {
     padding: 0px !important;
+}
+/* vc text chat border */
+[class^="chatLayerWrapper__"] [class*="container__"] {
+    border-top: none !important;
 }
 
 
@@ -41,13 +45,16 @@
 /* ===== SIDEBAR & PAGE ===== */
 
 /* SERVER list - reduce width and adjust avatar */
-.guilds_c48ade {
+[class*="guilds_"] {
     margin-right: -5px;
     margin-left: -5px;
     transition: all var(--transition-duration);
-    /* add server/discover buttons */
-    .tutorialContainer__650eb,
-    .listItem__650eb:has(.pill__5bc7e) {
+    /* DMs/add server/discover buttons */
+    [class^="tutorialContainer__"]:first-child {
+        display: none !important;
+    }
+    [class^="tutorialContainer__"],
+    [class^="listItem__"]:has([class^="pill__"]) {
         opacity: 0;
         transition: all var(--transition-duration);
     }
@@ -58,14 +65,14 @@
 /* why? if channel list width is below 100px,
 it unloads channels and freezes Discord and causes a lag spike,
 so we leave it unchanged and adjust everything around it */
-.page_c48ade {
+[class^="page_"] {
     margin-left: calc(-1*(var(--custom-guild-sidebar-width) - (var(--custom-guild-list-width))) - 1px);
     width: calc(100%+(var(--custom-guild-sidebar-width) - var(--custom-guild-list-width))) !important;
     border: none !important;
     transition: all var(--transition-duration);
-    .container__133bf,
-    .callContainer_cb9592,
-    .chat_f75fb0 {
+
+    [class^="callContainer_"],
+    [class^="chat_"] {
         border: none !important;
         border-radius: 8px;
         transition: border-top-left-radius var(--transition-duration);
@@ -73,7 +80,7 @@ so we leave it unchanged and adjust everything around it */
 }
 
 /* sidebar resize bar */
-.sidebarResizeHandle_c48ade {
+[class^="sidebarResizeHandle_"] {
     display: none !important;
 }
 
@@ -83,7 +90,7 @@ so we leave it unchanged and adjust everything around it */
 /* (voice channel/avatar/voice/settings) */
 /* hide elements until panel hover */
 
-.panels_c48ade {
+[class^="panels_"] {
     width: 85px !important;
     rotate: 90deg;
     transform: translate(-20px, calc(0.37 * var(--custom-guild-list-width)));
@@ -92,19 +99,19 @@ so we leave it unchanged and adjust everything around it */
 
 
 /* voice & activity panel */
-.wrapper_e131a9,
-.activityPanel_c48ade {
+[class^="panels_"] [class^="wrapper_"],
+[class^="panels_"] [class*="activityPanel_"] {
     display: none;
     transition: all var(--transition-duration);
 }
 
 /* avatar */
-.avatarWrapper__37e49 {
+[class^="avatarWrapper__"] {
     opacity: 0%;
 }
 
 /* mute/deafen/settings */
-.buttons__37e49 {
+[class^="buttons__"] {
     width: 75px;
     transition: all var(--transition-duration);
     button[aria-label="User Settings"] {
@@ -123,46 +130,48 @@ so we leave it unchanged and adjust everything around it */
 
 
 /* HOVER sidebar */
-body:has(#guild-header-popout) .sidebar_c48ade,
-body:has(#guild-context) .sidebar_c48ade,
-body:has(#guild-browse-channels-context-menu) .sidebar_c48ade,
-body:has(#channel-context) .sidebar_c48ade,
+body:has(#guild-header-popout) [class^="sidebar_"],
+body:has(#guild-context) [class^="sidebar_"],
+body:has(#guild-browse-channels-context-menu) [class^="sidebar_"],
+body:has(#channel-context) [class^="sidebar_"],
 /* user panel */
-body:has(#rtc-channel) .sidebar_c48ade,
-body:has([class^="debugPanelSection_"]) .sidebar_c48ade,
-body:has(#video-device-context) .sidebar_c48ade,
-body:has(#user-context) .sidebar_c48ade,
-body:has(#audio-device-context) .sidebar_c48ade,
-body:has(#user-settings-cog) .sidebar_c48ade,
-.sidebar_c48ade:hover,
-.sidebar_c48ade:has(.sidebarResizeHandle_c48ade:active) {
+body:has(#rtc-channel) [class^="sidebar_"],
+body:has([class^="debugPanelSection_"]) [class^="sidebar_"],
+body:has(#video-device-context) [class^="sidebar_"],
+body:has(#user-context) [class^="sidebar_"],
+body:has(#audio-device-context) [class^="sidebar_"],
+body:has(#user-settings-cog) [class^="sidebar_"],
+[class^="sidebar_"]:hover,
+[class^="sidebar_"]:has([class^="sidebarResizeHandle_"]:active) {
     /* roll back page to reveal channel list */
-    ~ .page_c48ade {
+    ~ [class^="page_"] {
         margin-left: 0px;
         border-top-left-radius: 0px !important;
     }
-    ~ .page_c48ade .container__133bf,
-    ~ .page_c48ade .callContainer_cb9592,
-    ~ .page_c48ade .chat_f75fb0 {
+    ~ [class^="page_"] [class^="callContainer_"],
+    ~ [class^="page_"] [class^="chat_"] {
         border-radius: 0px;
     }
 
     /* adjust SERVER list */
-    .guilds_c48ade {
+    [class*="guilds_"] {
         margin-left: 0px;
-        /* add server/discover buttons */
-        .tutorialContainer__650eb,
-        .listItem__650eb:has(.pill__5bc7e) {
+        /* DMs/add server/discover buttons */
+        [class^="tutorialContainer__"]:first-child {
+        display: flex !important;
+        }
+        [class^="tutorialContainer__"],
+        [class^="listItem__"]:has([class^="pill__"]) {
             opacity: 100%;
         }
     }
 
     /* adjust CHANNEL list */
-    .sidebarResizeHandle_c48ade {
+    [class^="sidebarResizeHandle_"] {
         display: grid !important;
     }
     /* adjust USER, VOICE & ACTIVITY panel */
-    .panels_c48ade {
+    [class^="panels_"] {
         rotate: 0deg;
         transform: translate(0%);
     }
@@ -172,36 +181,35 @@ body:has(#user-settings-cog) .sidebar_c48ade,
 }
 
 /* UNHOVER sidebar */
-.sidebar_c48ade:not(:hover) {
-    ~ .page_c48ade,
-    ~ .page_c48ade .container__133bf,
-    ~ .page_c48ade .callContainer_cb9592,
-    ~ .page_c48ade .chat_f75fb0 {
+[class^="sidebar_"]:not(:hover) {
+    ~ [class^="page_"],
+    ~ [class^="page_"] [class^="callContainer_"],
+    ~ [class^="page_"] [class^="chat_"] {
         transition-delay: var(--transition-delay);
     }
 }
 
 
 /* HOVER user, voice & activity panel */
-body:has(#rtc-channel) .panels_c48ade,
-body:has(#video-device-context) .panels_c48ade,
-body:has(#user-context) .panels_c48ade,
-body:has(#audio-device-context) .panels_c48ade,
-body:has(#user-settings-cog) .panels_c48ade,
-body:has([class^="debugPanelSection_"]) .panels_c48ade,
-.panels_c48ade:hover {
+body:has(#rtc-channel) [class^="panels_"],
+body:has(#video-device-context) [class^="panels_"],
+body:has(#user-context) [class^="panels_"],
+body:has(#audio-device-context) [class^="panels_"],
+body:has(#user-settings-cog) [class^="panels_"],
+body:has([class^="debugPanelSection_"]) [class^="panels_"],
+[class^="panels_"]:hover {
     width: calc(100% - var(--custom-panels-spacing)*2) !important;
 
-    .wrapper_e131a9,
-    .activityPanel_c48ade {
+    [class^="wrapper_"],
+    [class*="activityPanel_"] {
         display: inherit;
     }
     
-    .avatarWrapper__37e49 {
+    [class^="avatarWrapper__"] {
         opacity: 100%;
     }
 
-    .buttons__37e49 {
+    [class^="buttons__"] {
         width: 110px;
         button[aria-label="User Settings"] {
             display: flex;
