@@ -45,6 +45,6 @@ Once you open the custom CSS editor, you have these options:
 
 
 ## Footer
-This project is licensed under CC0 1.0 (Public Domain Dedication).  
+Everything in this repository is licensed under CC0 1.0 (Public Domain Dedication).  
 See [CC0 1.0 Summary](https://creativecommons.org/publicdomain/zero/1.0/) for (human-readable) details.
 See [LICENSE](./LICENSE) for legal code.
